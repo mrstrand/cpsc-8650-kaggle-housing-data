@@ -5,6 +5,20 @@ https://www.kaggle.com/c/house-prices-advanced-regression-techniques/
 ## Tech/framework used
 - Python
 
+## Timeline  TODO 
+- [x] Jan 30th - Project Proposal Due  
+- [ ] Feb 3rd - Finish reading machine learning tutorials  
+- [ ] Feb 10th - Determine which models we will use  
+- [ ] Feb 17th - Turn data into numeric values that we can actually use  
+- [ ] Feb 24th - Visualizing the data, determining which attributes correlate with sales price. Choose at least 2 machine learning models to test  
+- [ ] Feb 27th - Intermediate Project Report Due  
+- [ ] March 2 - Complete predictions using one model and submit to Kaggle  
+- [ ] March 9 - Complete predictions using another model and submit to Kaggle  
+- [ ] March 16 - Initial Draft of report - Decide if we should use another model  
+- [ ] March 23 - Revision 1 of report - All models that we plan to report on completed  
+- [ ] March 30 - Solid, well written and thought out report completed  
+- [ ] Apr 16th - Final Report Due  
+
 ## Installation
 1. Install Python 3.8.2
 2. Run `scripts\new-environment-setup`. This will create a virtual environment containing only the dependencies of this project.
