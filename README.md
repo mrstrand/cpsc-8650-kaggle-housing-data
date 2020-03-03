@@ -1,5 +1,6 @@
 ## CPSC 8650 Data Mining: Kaggle Housing Data
-This project was created for CPSC 8650, Data Mining at Clemson University. The goal of the project is to accurately predict the sale price of the houses in the test set, after training a knn model with the training set.
+This project was created for CPSC 8650, Data Mining at Clemson University. The goal of the project is to accurately predict the sale price of the houses in the test set, after training a knn model with the training set.  
+https://www.kaggle.com/c/house-prices-advanced-regression-techniques/
 
 ## Tech/framework used
 - Python
