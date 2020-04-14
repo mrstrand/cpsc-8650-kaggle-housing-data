@@ -117,7 +117,7 @@ data.Utilities = data.Utilities.mode()[0]
 data.SaleType = data.SaleType.mode()[0]
 data.Exterior1st = data.Exterior1st.mode()[0]
 data.Exterior2nd = data.Exterior2nd.mode()[0]
-#data.Electrical = data.Electrical.mode()[0]
+# data.Electrical = data.Electrical.mode()[0]
 data.Electrical = df['Electrical'].mode()[0]
 data.MSZoning = data.MSZoning.mode()[0]
 data.MasVnrType = df['MasVnrType'].mode()[0]
@@ -263,11 +263,7 @@ y_train = training_data['SalePrice'].values
 x_train = training_data.drop('SalePrice', axis=1).values
 
 
-classifier = RandomForestRegressor(n_estimators=500, criterion='mse',
-                                              max_depth=None, min_samples_split=2, min_samples_leaf=1,
-                                              min_weight_fraction_leaf=0.0, max_features='auto', max_leaf_nodes=None,
-                                              min_impurity_decrease=0.0, min_impurity_split=None, bootstrap=True,
-                                              oob_score=False, n_jobs=1, random_state=0, verbose=0, warm_start=False)
+classifier = RandomForestRegressor(n_estimators=500)
 
 kf = KFold(5, random_state=7, shuffle=True)
 true_y = []
