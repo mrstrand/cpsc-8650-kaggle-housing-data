@@ -61,7 +61,6 @@ data.GarageType.fillna(inplace=True, value='No')
 data.MiscFeature.fillna(inplace=True, value='No')
 data.PoolQC.fillna(inplace=True, value='No')
 
-
 # %% [code]
 # now do it to test as well
 data_test.Alley.fillna(inplace=True, value='No')
@@ -121,7 +120,6 @@ data.Exterior2nd = data.Exterior2nd.mode()[0]
 data.Electrical = df['Electrical'].mode()[0]
 data.MSZoning = data.MSZoning.mode()[0]
 data.MasVnrType = df['MasVnrType'].mode()[0]
-
 
 # %% [code]
 # test
@@ -243,10 +241,103 @@ print(data.columns)
 print(data_test.columns)
 
 # %% [code]
+# potentially doing this will eliminate the creating of extra featuers causing an error when
+# sending the test data into the trained model
+data['KitchenQual'] = pd.factorize(data['KitchenQual'])[0]
+data['Functional'] = pd.factorize(data['Functional'])[0]
+data['Utilities'] = pd.factorize(data['Utilities'])[0]
+data['SaleType'] = pd.factorize(data['SaleType'])[0]
+data['Exterior1st'] = pd.factorize(data['Exterior1st'])[0]
+data['Exterior2nd'] = pd.factorize(data['Exterior2nd'])[0]
+data['Electrical'] = pd.factorize(data['Electrical'])[0]
+data['MSZoning'] = pd.factorize(data['MSZoning'])[0]
+data['MasVnrType'] = pd.factorize(data['MasVnrType'])[0]
+
+data['Street'] = pd.factorize(data['Street'])[0]
+data['Alley'] = pd.factorize(data['Alley'])[0]
+data['LandContour'] = pd.factorize(data['LandContour'])[0]
+data['LotConfig'] = pd.factorize(data['LotConfig'])[0]
+data['Neighborhood'] = pd.factorize(data['Neighborhood'])[0]
+data['Condition1'] = pd.factorize(data['Condition1'])[0]
+data['Condition2'] = pd.factorize(data['Condition2'])[0]
+data['BldgType'] = pd.factorize(data['BldgType'])[0]
+data['HouseStyle'] = pd.factorize(data['HouseStyle'])[0]
+data['RoofStyle'] = pd.factorize(data['RoofStyle'])[0]
+data['RoofMatl'] = pd.factorize(data['RoofMatl'])[0]
+data['Foundation'] = pd.factorize(data['Foundation'])[0]
+data['BsmtExposure'] = pd.factorize(data['BsmtExposure'])[0]
+data['BsmtFinType1'] = pd.factorize(data['BsmtFinType1'])[0]
+data['BsmtFinType2'] = pd.factorize(data['BsmtFinType2'])[0]
+data['Heating'] = pd.factorize(data['Heating'])[0]
+data['CentralAir'] = pd.factorize(data['CentralAir'])[0]
+data['GarageType'] = pd.factorize(data['GarageType'])[0]
+data['PavedDrive'] = pd.factorize(data['PavedDrive'])[0]
+
+data['BsmtCond'] = pd.factorize(data['BsmtCond'])[0]
+data['BsmtQual'] = pd.factorize(data['BsmtQual'])[0]
+data['Fence'] = pd.factorize(data['Fence'])[0]
+data['FireplaceQu'] = pd.factorize(data['FireplaceQu'])[0]
+data['GarageCond'] = pd.factorize(data['GarageCond'])[0]
+data['GarageFinish'] = pd.factorize(data['GarageFinish'])[0]
+data['GarageType'] = pd.factorize(data['GarageType'])[0]
+data['MiscFeature'] = pd.factorize(data['MiscFeature'])[0]
+data['PoolQC'] = pd.factorize(data['PoolQC'])[0]
+
+data['SaleCondition'] = pd.factorize(data['SaleCondition'])[0]
+
+
+# %% [code]
+data_test['KitchenQual'] = pd.factorize(data_test['KitchenQual'])[0]
+data_test['Functional'] = pd.factorize(data_test['Functional'])[0]
+data_test['Utilities'] = pd.factorize(data_test['Utilities'])[0]
+data_test['SaleType'] = pd.factorize(data_test['SaleType'])[0]
+data_test['Exterior1st'] = pd.factorize(data_test['Exterior1st'])[0]
+data_test['Exterior2nd'] = pd.factorize(data_test['Exterior2nd'])[0]
+data_test['Electrical'] = pd.factorize(data_test['Electrical'])[0]
+data_test['MSZoning'] = pd.factorize(data_test['MSZoning'])[0]
+data_test['MasVnrType'] = pd.factorize(data_test['MasVnrType'])[0]
+
+data_test['Street'] = pd.factorize(data_test['Street'])[0]
+data_test['Alley'] = pd.factorize(data_test['Alley'])[0]
+data_test['LandContour'] = pd.factorize(data_test['LandContour'])[0]
+data_test['LotConfig'] = pd.factorize(data_test['LotConfig'])[0]
+data_test['Neighborhood'] = pd.factorize(data_test['Neighborhood'])[0]
+data_test['Condition1'] = pd.factorize(data_test['Condition1'])[0]
+data_test['Condition2'] = pd.factorize(data_test['Condition2'])[0]
+data_test['BldgType'] = pd.factorize(data_test['BldgType'])[0]
+data_test['HouseStyle'] = pd.factorize(data_test['HouseStyle'])[0]
+data_test['RoofStyle'] = pd.factorize(data_test['RoofStyle'])[0]
+data_test['RoofMatl'] = pd.factorize(data_test['RoofMatl'])[0]
+data_test['Foundation'] = pd.factorize(data_test['Foundation'])[0]
+data_test['BsmtExposure'] = pd.factorize(data_test['BsmtExposure'])[0]
+data_test['BsmtFinType1'] = pd.factorize(data_test['BsmtFinType1'])[0]
+data_test['BsmtFinType2'] = pd.factorize(data_test['BsmtFinType2'])[0]
+data_test['Heating'] = pd.factorize(data_test['Heating'])[0]
+data_test['CentralAir'] = pd.factorize(data_test['CentralAir'])[0]
+data_test['GarageType'] = pd.factorize(data_test['GarageType'])[0]
+data_test['PavedDrive'] = pd.factorize(data_test['PavedDrive'])[0]
+
+data_test['BsmtCond'] = pd.factorize(data_test['BsmtCond'])[0]
+data_test['BsmtQual'] = pd.factorize(data_test['BsmtQual'])[0]
+data_test['Fence'] = pd.factorize(data_test['Fence'])[0]
+data_test['FireplaceQu'] = pd.factorize(data_test['FireplaceQu'])[0]
+data_test['GarageCond'] = pd.factorize(data_test['GarageCond'])[0]
+data_test['GarageFinish'] = pd.factorize(data_test['GarageFinish'])[0]
+data_test['GarageType'] = pd.factorize(data_test['GarageType'])[0]
+data_test['MiscFeature'] = pd.factorize(data_test['MiscFeature'])[0]
+data_test['PoolQC'] = pd.factorize(data_test['PoolQC'])[0]
+
+data_test['SaleCondition'] = pd.factorize(data_test['SaleCondition'])[0]
+
+# %% [code]
 
 # one hot encoding
-training_data = pd.get_dummies(data)
-testing_data = pd.get_dummies(data_test)
+# training_data = pd.get_dummies(data)
+# testing_data = pd.get_dummies(data_test)
+# training_data = pd.factorize(data)
+# testing_data = pd.factorize(data_test)
+training_data = data
+testing_data = data_test
 # print("New  shape after one-hot encoding:", np.shape(training_data))
 
 # %% [code]
@@ -304,8 +395,10 @@ print(len(test_set[0]))
 print(test_set)
 
 # %% [code]
-test_set = training_data.values
-#classifier.fit(x_train,y_train)
+# ValueError: Number of features of the model must match the input. Model n_features is 82 and input n_features is 83
+# for some reason there is a feature being created in test that isnt in train
+# test_set = training_data.values
+# classifier.fit(x_train,y_train)
 # prediction = classifier.predict(test_set)
 
 # %% [code]
@@ -316,7 +409,7 @@ print(len(testing_id))
 
 # %% [code]
 submit = pd.DataFrame()
-submit['id'] = training_id
+submit['Id'] = training_id
 submit['SalePrice'] = pred_y
 
 # %% [code]
