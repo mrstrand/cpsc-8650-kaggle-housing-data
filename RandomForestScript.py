@@ -285,7 +285,6 @@ data['PoolQC'] = pd.factorize(data['PoolQC'])[0]
 
 data['SaleCondition'] = pd.factorize(data['SaleCondition'])[0]
 
-
 # %% [code]
 data_test['KitchenQual'] = pd.factorize(data_test['KitchenQual'])[0]
 data_test['Functional'] = pd.factorize(data_test['Functional'])[0]
@@ -345,6 +344,10 @@ training_data['TotalSF'] = training_data['TotalBsmtSF'] + training_data['1stFlrS
 testing_data['TotalSF'] = testing_data['TotalBsmtSF'] + testing_data['1stFlrSF'] + testing_data['2ndFlrSF'] + testing_data['GarageArea']
 
 # %% [code]
+print(training_data.shape)
+print(testing_data.shape)
+
+# %% [code]
 # Random Forests Classification
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import KFold
@@ -354,7 +357,7 @@ y_train = training_data['SalePrice'].values
 x_train = training_data.drop('SalePrice', axis=1).values
 
 
-classifier = RandomForestRegressor(n_estimators=500)
+classifier = RandomForestRegressor(n_estimators=50)
 
 kf = KFold(5, random_state=7, shuffle=True)
 true_y = []
@@ -390,27 +393,35 @@ print(len(x_train[0]))
 print(x_train)
 
 # %% [code]
-test_set = training_data.values
+test_set = testing_data.values
+#test_set = training_data.values
 print(len(test_set[0]))
 print(test_set)
 
 # %% [code]
 # ValueError: Number of features of the model must match the input. Model n_features is 82 and input n_features is 83
 # for some reason there is a feature being created in test that isnt in train
-# test_set = training_data.values
-# classifier.fit(x_train,y_train)
-# prediction = classifier.predict(test_set)
+#test_set = training_data.values
+classifier.fit(x_train,y_train)
+prediction = classifier.predict(test_set)
 
 # %% [code]
 training_id = training_data['Id']
 testing_id = testing_data['Id']
 print(len(training_id))
 print(len(testing_id))
+print(len(pred_y))
 
 # %% [code]
-submit = pd.DataFrame()
-submit['Id'] = training_id
-submit['SalePrice'] = pred_y
+submit_test = pd.DataFrame()
+submit_test['Id'] = testing_id
+submit_test['SalePrice'] = prediction
 
 # %% [code]
-submit.to_csv('mySubmission.csv', index=False)
+submit_train = pd.DataFrame()
+submit_train['Id'] = training_id
+submit_train['SalePrice'] = pred_y
+
+# %% [code]
+submit_test.to_csv('mySubmission.csv', index=False)
+submit_train.to_csv('mySubmissionTrain.csv', index=False)
