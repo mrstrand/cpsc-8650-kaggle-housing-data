@@ -1,7 +1,9 @@
 # %% [code]
 
-#The script version of the kaggle notebook
-#It is easier to work this way then copy and paste it into kaggle
+# This is a script version of RandomForest.ipynb
+# This was not run as a script but as a notebook in the ipynb format on kaggle
+# This is just to be used as a way to read the logic that was preformed not for testing
+# It is easier to work this way then copy and paste it into kaggle
 
 import matplotlib.pyplot as plt
 import numpy as np
